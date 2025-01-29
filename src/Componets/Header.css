@@ -1,0 +1,48 @@
+.Header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  width: 100%;
+  /* border: 2px solid red; */
+}
+
+.Title {
+  backdrop-filter: blur(2px);
+  font-family: "Lobster Two", sans-serif;
+  margin-left: 3rem;
+  font-size: 3.2rem;
+  text-decoration: underline;
+}
+
+#user-input {
+  width: 18rem;
+  height: 1.8rem;
+  border-radius: 5rem;
+  padding-left: 0.9rem;
+  background-image: url(public/Search.svg);
+  background-repeat: no-repeat;
+  background-position: top 50% left 97%;
+  background-size: 3vh 3vw;
+}
+
+.Button {
+  color: white;
+  background-color: transparent;
+  width: 5rem;
+  height: 1.7rem;
+  border-radius: 5rem;
+  box-shadow: 5px 0px 10px rgba(139, 69, 19, 0.8);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.Button:hover {
+  background-color: var(--buttonHover);
+}
+
+.Button-container {
+  display: flex;
+  gap: 2rem;
+  margin-right: 3rem;
+}
