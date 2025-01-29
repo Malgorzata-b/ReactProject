@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 export default function Category() {
-  const { category } = useParams();
-
   const categories = [
     "Fiction",
     "Mystery",

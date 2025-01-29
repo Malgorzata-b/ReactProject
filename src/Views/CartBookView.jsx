@@ -23,13 +23,13 @@ export default function CartBookView() {
         setBook(data_book);
         console.log(data_book);
       } catch (error) {
-        error.message;
+        setError(error.message);
       } finally {
         setLoading(false);
       }
     };
     fetchBookDetails();
-  }, []);
+  }, [cartID]);
 
   if (loading) return <p>Loading....</p>;
   if (error) return <p>Error: {error}</p>;
