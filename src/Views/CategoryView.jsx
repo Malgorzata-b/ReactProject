@@ -1,12 +1,12 @@
-import { AppContext } from "../App";
 import { useParams } from "react-router-dom";
-import { useEffect, useContext } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function CategoryView() {
   const { categoryTopic } = useParams();
-  const { error, setError, loading, setLoading, books, setBooks } =
-    useContext(AppContext);
+  const [books, setBooks] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCategory = async () => {

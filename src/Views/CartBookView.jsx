@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useContext } from "react";
-import { AppContext } from "../App";
+import { useEffect, useState } from "react";
+// import { AppContext } from "../App";
 
 export default function CartBookView() {
   const { cartID } = useParams();
-  const { error, setError, loading, setLoading, book, setBook } =
-    useContext(AppContext);
-
+  const [book, setBook] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
@@ -74,7 +74,10 @@ export default function CartBookView() {
           <div className="link-container">
             <a
               className="Link-ebook"
-              href={book.formats["text/plain; charset=utf-8"]}
+              href={
+                book.formats["text/plain; charset=utf-8"] ||
+                book.formats["text/plain; charset=us-ascii"]
+              }
             >
               Link to ebook.
             </a>

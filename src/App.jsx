@@ -9,9 +9,8 @@ export default function App() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [book, setBook] = useState([]);
-  const [cart, setCart] = useState([]);
-  const [books, setBooks] = useState([]);
+
+  // const [cart, setCart] = useState([]);
 
   const apiURL = "https://gutendex.com/books";
 
@@ -47,16 +46,6 @@ export default function App() {
         value={{
           data,
           setData,
-          error,
-          setError,
-          loading,
-          setLoading,
-          book,
-          setBook,
-          cart,
-          setCart,
-          books,
-          setBooks,
         }}
       >
         <div>
