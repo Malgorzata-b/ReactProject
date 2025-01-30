@@ -14,8 +14,14 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorView />,
     children: [
-      { index: true, element: <HomeView /> },
-      { path: "/category/:categoryTopic", element: <CategoryView /> },
+      {
+        index: true,
+        element: <HomeView />,
+      },
+      {
+        path: "/category/:categoryTopic",
+        element: <CategoryView />,
+      },
       {
         path: "/cart/:cartID",
         element: <CartBookView />,

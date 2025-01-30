@@ -1,6 +1,7 @@
 import { AppContext } from "../App";
 import { useParams } from "react-router-dom";
 import { useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 
 export default function CategoryView() {
   const { categoryTopic } = useParams();
@@ -14,7 +15,7 @@ export default function CategoryView() {
         setError(null);
 
         const response_category = await fetch(
-          ` https://gutendex.com/books/?topic=${categoryTopic}`
+          `https://gutendex.com/books/?topic=${categoryTopic}`
         );
         if (!response_category.ok) {
           throw new Error(
@@ -41,5 +42,36 @@ export default function CategoryView() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  return <section className="Container-books">I don't know yet</section>;
+  return (
+    <>
+      <h2 className="List">
+        <strong> Book List:</strong>
+      </h2>
+      <section className="Container-books">
+        {books.map((book) => {
+          return (
+            <div className="Books-container">
+              <li>
+                <h1 className="Title-book"> Title: {book.title}</h1>
+                <img
+                  className="Book-img"
+                  src={book.formats["image/jpeg"]}
+                  alt="Book"
+                />
+                <p className="Category-Name">
+                  <strong>Category:</strong>{" "}
+                  {book.bookshelves.map((bookshel) =>
+                    bookshel.replace("Browsing:", " ")
+                  )}
+                </p>
+                <Link className="link--link2" to={`/cart/${book.id}`}>
+                  More Details
+                </Link>
+              </li>
+            </div>
+          );
+        })}
+      </section>
+    </>
+  );
 }
