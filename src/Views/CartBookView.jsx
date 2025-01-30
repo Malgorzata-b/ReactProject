@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 // import { AppContext } from "../App";
+import { Link } from "react-router-dom";
 
 export default function CartBookView() {
   const { cartID } = useParams();
@@ -85,6 +86,9 @@ export default function CartBookView() {
           </div>
           <div className="Button-addtoFav">
             <button className="Button-AddBook">Add to Favorites</button>
+            <Link className="link--link2" to={`/`}>
+              HomePage
+            </Link>
           </div>
         </>
       ) : (

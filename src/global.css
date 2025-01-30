@@ -68,8 +68,8 @@ body {
   border: 2px solid var(--BlackColor);
   margin: 0.9rem;
   border-radius: 10%;
-  width: 15rem;
-  height: 22rem;
+  width: 20rem;
+  height: 30rem;
   text-align: center;
   background-color: var(--BooksContainer);
 }
@@ -86,10 +86,15 @@ body {
   box-shadow: 0px 2px 3px 2px var(--ImageBookShadow);
   margin: 0.9rem 0;
 }
+#Authorp {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
 
 .Container-books {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 3rem;
 }
 
 .List {
@@ -107,11 +112,14 @@ body {
   font-weight: 600;
   text-decoration: none;
   font-size: 0.8rem;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 0.3rem;
 }
 
 .link--link2:hover {
-  color: var(--textColor);
-  text-shadow: 5px 1px 4px var(--textShadow);
+  box-shadow: 0px 0px 25px 8px var(--textShadow);
+  background-color: bisque;
 }
 
 .Book-img-cart {
@@ -184,6 +192,7 @@ body {
 
 .Category-Name {
   font-size: 0.7rem;
+  padding-bottom: 2.5rem;
 }
 
 .Link-ebook {

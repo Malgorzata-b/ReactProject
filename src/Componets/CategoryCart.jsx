@@ -20,7 +20,7 @@ export default function CategoryCart() {
                   src={book.formats["image/jpeg"]}
                   alt="Book"
                 />
-                <p>
+                <p id="Authorp">
                   Author: {""}
                   {book.authors.map((author) => author.name.replace(",", " "))}
                 </p>
