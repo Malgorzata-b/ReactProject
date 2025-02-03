@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-// import { AppContext } from "../App";
 import { Link } from "react-router-dom";
 
 export default function CartBookView() {
@@ -8,6 +7,19 @@ export default function CartBookView() {
   const [book, setBook] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const handleAddToFavorites = () => {
+    const FavoritesBooks = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    const isFavorite = FavoritesBooks.some((favBook) => favBook.id === book.id);
+
+    if (!isFavorite) {
+      const updatedFavorites = [...FavoritesBooks, book];
+
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    }
+  };
+
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
@@ -58,8 +70,7 @@ export default function CartBookView() {
               />
             </div>
             <div className="Information-Author">
-              <p>Author:</p>
-              <p>
+              <p id="Authorp">
                 {book.authors.map((author) => {
                   return (
                     <>
@@ -85,7 +96,9 @@ export default function CartBookView() {
             <p>Number of downloads: {book.download_count}</p>
           </div>
           <div className="Button-addtoFav">
-            <button className="Button-AddBook">Add to Favorites</button>
+            <button className="Button-AddBook" onClick={handleAddToFavorites}>
+              Add to Favorites
+            </button>
             <Link className="link--link2" to={`/`}>
               HomePage
             </Link>

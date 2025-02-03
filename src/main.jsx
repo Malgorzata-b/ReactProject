@@ -7,6 +7,7 @@ import HomeView from "./Views/HomeView.jsx";
 import CategoryView from "./Views/CategoryView.jsx";
 import ErrorView from "./Views/ErrorView.jsx";
 import CartBookView from "./Views/CartBookView.jsx";
+import Favorites from "./Views/FavoritesView.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/cart/:cartID",
         element: <CartBookView />,
+      },
+      {
+        path: "/favorites",
+        element: <Favorites />,
       },
     ],
   },

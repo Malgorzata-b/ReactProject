@@ -10,8 +10,6 @@ export default function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // const [cart, setCart] = useState([]);
-
   const apiURL = "https://gutendex.com/books";
 
   useEffect(() => {

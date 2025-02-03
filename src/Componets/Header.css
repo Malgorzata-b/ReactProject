@@ -29,8 +29,8 @@
 .Button {
   color: white;
   background-color: transparent;
-  width: 5rem;
-  height: 1.7rem;
+  width: 9rem;
+  height: 3rem;
   border-radius: 5rem;
   box-shadow: 5px 0px 10px rgba(139, 69, 19, 0.8);
   cursor: pointer;

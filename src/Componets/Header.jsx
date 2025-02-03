@@ -1,6 +1,11 @@
 import "./Header.css";
+import { AppContext } from "../App";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
+  const { data } = useContext(AppContext);
+
   return (
     <header className="Header-container">
       <h1 className="Title">
@@ -11,12 +16,20 @@ export default function Header() {
           type="text"
           name="user-input"
           id="user-input"
-          placeholder="Write the title and author."
-        />
+          placeholder="Write the title."
+        ></input>
       </form>
+
       <div className="Button-container">
-        <button className="Button">Favorites</button>
-        <button className="Button">Items</button>
+        <button className="Button">
+          <Link className="FavoritesLink" to="/favorites">
+            Favorites📙
+          </Link>
+        </button>
+
+        <button className="Button">{`Items in cart: ${
+          data.results.length || 0
+        }`}</button>
       </div>
     </header>
   );

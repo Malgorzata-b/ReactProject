@@ -139,7 +139,7 @@ body {
   margin: 3rem;
   border-radius: 5rem;
   width: 60rem;
-  height: 35rem;
+  height: 40rem;
   text-align: center;
   background-color: var(--BooksContainer);
   /* border: 5px solid rgb(47, 15, 229); */
@@ -173,7 +173,6 @@ body {
 .Button-addtoFav {
   display: flex;
   margin-left: 22rem;
-  /* justify-content: center; */
   /* border: 5px solid palevioletred; */
 }
 
@@ -198,4 +197,38 @@ body {
 .Link-ebook {
   text-decoration: none;
   color: white;
+}
+
+.Button-addtoFav {
+  display: flex;
+  gap: 10rem;
+  margin-top: 3rem;
+}
+
+.Favorites {
+  padding-top: 2rem;
+  margin: 2rem;
+}
+
+.FavoritesTitle {
+  padding-bottom: 2rem;
+  font-family: "Lobster Two", sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  text-decoration: underline;
+  text-shadow: 5px 6px 5px var(--textShadow);
+}
+
+.ButtonRemove {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.FavoritesLink {
+  text-decoration: none;
+  text-align: center;
+  padding-top: 2vh;
+  color: white;
+  font-size: 1rem;
+  font-weight: 900;
 }

@@ -47,6 +47,7 @@ export default function CategoryView() {
       <Link className="link--link2" to={`/`}>
         HomePage
       </Link>
+
       <h2 className="List">
         <strong> Book List:</strong>
       </h2>
