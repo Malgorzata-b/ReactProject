@@ -10,7 +10,7 @@ export default function App() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const apiURL = "https://gutendex.com/books";
+  const apiURL = "https://gutendex.com/books?languages=pl";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,10 +47,11 @@ export default function App() {
         }}
       >
         <div>
-          <Header />
-          <Category />
-
-          <main>
+          <div id="Header-nav">
+            <Header />
+            <Category />
+          </div>
+          <main id="Header-nav">
             <Outlet />
           </main>
         </div>

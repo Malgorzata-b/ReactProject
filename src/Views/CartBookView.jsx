@@ -7,6 +7,7 @@ export default function CartBookView() {
   const [book, setBook] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [FavoritesBooks, setFavoritesBook] = useState(false);
 
   const handleAddToFavorites = () => {
     const FavoritesBooks = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -17,6 +18,7 @@ export default function CartBookView() {
       const updatedFavorites = [...FavoritesBooks, book];
 
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      setFavoritesBook(true);
     }
   };
 
@@ -48,65 +50,75 @@ export default function CartBookView() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="Book-container">
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-      {book && book.title ? (
-        <>
-          <div className="Book-information-container">
-            <div className="Book-info-cont">
-              <h1 className="Title-book"> {book.title}</h1>
-              <p className="Category-Name">
-                <strong>Category:</strong>{" "}
-                {book.bookshelves.map((bookshel) =>
-                  bookshel.replace("Browsing:", " ")
-                )}
-              </p>
-              <p>Language: {book.languages}</p>
-              <img
-                className="Book-img-cart"
-                src={book.formats["image/jpeg"]}
-                alt="Book"
-              />
+    <section id="BookSection-details">
+      <div className="Book-container-details">
+        {loading && <p>Loading...</p>}
+        {error && <p>Error: {error}</p>}
+        {book && book.title ? (
+          <>
+            <div className="Book-information-container">
+              <div className="Book-info-cont">
+                <h1 className="Title-book"> {book.title}</h1>
+                <p className="Category-Name">
+                  <strong>Category:</strong>{" "}
+                  {book.bookshelves.map((bookshel) =>
+                    bookshel.replace("Browsing:", " ")
+                  )}
+                </p>
+                <p>Language: {book.languages}</p>
+                <Link to={`/`}>
+                  <img
+                    className="Book-img-cart"
+                    src={book.formats["image/jpeg"]}
+                    alt="Book"
+                  />
+                </Link>
+              </div>
+              <div className="Information-Author">
+                <p id="Authorp">
+                  {book.authors.map((author) => {
+                    return (
+                      <>
+                        {author.name.replace(",", " ")} ({author.birth_year} -{" "}
+                        {author.death_year})
+                      </>
+                    );
+                  })}
+                </p>
+                <p className="Decription-Book"> {book.summaries}</p>
+              </div>
             </div>
-            <div className="Information-Author">
-              <p id="Authorp">
-                {book.authors.map((author) => {
-                  return (
-                    <>
-                      {author.name.replace(",", " ")} ({author.birth_year} -{" "}
-                      {author.death_year})
-                    </>
-                  );
-                })}
-              </p>
-              <p className="Decription-Book"> {book.summaries}</p>
+            <div className="link-container">
+              <p>Number of downloads: {book.download_count}</p>
             </div>
-          </div>
-          <div className="link-container">
-            <a
-              className="Link-ebook"
-              href={
-                book.formats["text/plain; charset=utf-8"] ||
-                book.formats["text/plain; charset=us-ascii"]
-              }
-            >
-              Link to ebook.
-            </a>
-            <p>Number of downloads: {book.download_count}</p>
-          </div>
-          <div className="Button-addtoFav">
-            <button className="Button-AddBook" onClick={handleAddToFavorites}>
-              Add to Favorites
-            </button>
-            <Link className="link--link2" to={`/`}>
-              HomePage
-            </Link>
-          </div>
-        </>
-      ) : (
-        <p>Not found.</p>
-      )}
-    </div>
+            <div className="Button-addtoFav">
+              <a
+                className="Link-ebook"
+                href={
+                  book.formats["text/plain; charset=utf-8"] ||
+                  book.formats["text/plain; charset=us-ascii"]
+                }
+              >
+                <button className="Button-AddBook">Link to ebook</button>
+              </a>
+
+              <button
+                className="Button-AddBook"
+                onClick={handleAddToFavorites}
+                disabled={FavoritesBooks}
+              >
+                {" "}
+                {FavoritesBooks ? "Added to Favorites📙" : "Add to Favorites"}
+              </button>
+              <Link className="link--link2" to={`/`}>
+                HomePage
+              </Link>
+            </div>
+          </>
+        ) : (
+          <p>Not found.</p>
+        )}
+      </div>
+    </section>
   );
 }

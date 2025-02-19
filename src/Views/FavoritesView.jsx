@@ -38,11 +38,13 @@ export default function Favorites() {
             <div className="Books-container">
               <li key={book.id}>
                 <h1 className="Title-book"> Title: {book.title}</h1>
-                <img
-                  className="Book-img"
-                  src={book.formats["image/jpeg"]}
-                  alt="Book"
-                />
+                <Link to={`/cart/${book.id}`}>
+                  <img
+                    className="Book-img"
+                    src={book.formats["image/jpeg"]}
+                    alt="Book"
+                  />{" "}
+                </Link>
                 <p id="Authorp">
                   Author: {""}
                   {book.authors.map((author) => author.name.replace(",", " "))}

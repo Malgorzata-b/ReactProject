@@ -57,11 +57,13 @@ export default function CategoryView() {
             <div className="Books-container">
               <li>
                 <h1 className="Title-book"> Title: {book.title}</h1>
-                <img
-                  className="Book-img"
-                  src={book.formats["image/jpeg"]}
-                  alt="Book"
-                />
+                <Link to={`/cart/${book.id}`}>
+                  <img
+                    className="Book-img"
+                    src={book.formats["image/jpeg"]}
+                    alt="Book"
+                  />{" "}
+                </Link>
                 <p className="Category-Name">
                   <strong>Category:</strong>{" "}
                   {book.bookshelves.map((bookshel) =>
